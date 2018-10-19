@@ -89,13 +89,15 @@ function calcularPlanCuotas(planCuotas){
         c.cuota = redondear(c.cuota);
         c.saldo = redondear(c.saldo);
     });
-
-    return {
-        plazoMeses,
-        interesMensual,
-        monto,
-        cuotas,
+    
+    var resultado = {
+        plazoMeses:plazoMeses,
+        interesMensual:interesMensual,
+        monto:planCuotas.monto,
+        cuotas:cuotas,
     };
+    
+    return resultado;
 }
 
 function redondear(monto){
