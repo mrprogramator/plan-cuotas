@@ -1,21 +1,21 @@
-function obtenerCreditoItemTemplate({id, descripcion, icono}){
+function obtenerCreditoItemTemplate(creditoItem){
     return "<div class=\"item-container\" style=\"padding:14px\">"
                 + "<table style=\"margin:0px auto\">"
                     + "<tr>"
                         + "<td style=\"vertical-align:middle\">"
                             + "<div class=\"logo-container\">"
-                                + "<span class=\"" + icono + " fa-4x\" onclick=\"mostrarDetallesCredito(" + id + ")\"></span>"
+                                + "<span class=\"" + creditoItem.icono + " fa-4x\" onclick=\"mostrarDetallesCredito(" + creditoItem.id + ")\"></span>"
                             + "</div>"
                         + "</td>"
                         + "<td style=\"vertical-align:middle;padding-left:14px;color:#022A5B\">"
-                            + "<h3 onclick=\"mostrarDetallesCredito(" + id + ")\" style=\"cursor:pointer\">" + descripcion + "</h3>"
+                            + "<h3 onclick=\"mostrarDetallesCredito(" + creditoItem.id + ")\" style=\"cursor:pointer\">" + creditoItem.descripcion + "</h3>"
                         + "</td>"
                     + "</tr>"
                 + "</table>"
             + "</div>";
 }
 
-function obtenerDetallesCreditoTemplate({id, descripcion, icono,requisitosBasicos, documentacionLegal, tasas}){
+function obtenerDetallesCreditoTemplate(creditoItem){
     return "<div style=\"width:90%;margin:20px auto;border-radius:4px;border:1px solid gray;\">" 
     + "<div style=\"margin:0px;padding:7px;background:#01A8A0;color:#fff\">"
         + "<table>"
@@ -25,49 +25,49 @@ function obtenerDetallesCreditoTemplate({id, descripcion, icono,requisitosBasico
                 + "</td>"
                 + "<td style=\"vertical-align:middle\">"
                     + "<div class=\"logo-container-tiny\">"
-                        + "<span class=\"" + icono + " fa-2x\"></span>"
+                        + "<span class=\"" + creditoItem.icono + " fa-2x\"></span>"
                     + "</div>"
                 + "</td>"
                 + "<td style=\"vertical-align:middle;padding-left:14px;color:#fff\">"
-                    + "<h4>" + descripcion + "</h4>"
+                    + "<h4>" + creditoItem.descripcion + "</h4>"
                 + "</td>"
             + "</tr>"
         + "</table>"
     + "</div>"
     + "<div style=\"padding:14px\">"
-        + obtenerListadoTemplate({titulo: "Requisitos básicos", listado: requisitosBasicos})
-        + obtenerListadoTemplate({titulo: "Documentación legal", listado: documentacionLegal})
-        + obtenerTasasTemplate(tasas)
+        + obtenerListadoTemplate({titulo: "Requisitos básicos", listado: creditoItem.requisitosBasicos})
+        + obtenerListadoTemplate({titulo: "Documentación legal", listado: creditoItem.documentacionLegal})
+        + obtenerTasasTemplate(creditoItem.tasas)
     +"</div>"
     + "<div style=\"padding:14px;text-align:center\">"
-        + "<button class=\"btn btn-primary\" onclick=\"mostrarPlanCuotasCredito(" + id + ")\"><span class=\"fa fa-calculator\"></span> Plan de Cuotas</button>"
+        + "<button class=\"btn btn-primary\" onclick=\"mostrarPlanCuotasCredito(" + creditoItem.id + ")\"><span class=\"fa fa-calculator\"></span> Plan de Cuotas</button>"
         + "<button class=\"btn btn-primary\" onclick=\"mostrarCreditos()\"><span class=\"fa fa-arrow-left\"></span> Volver</button> "
     +"</div>"
 +"</div>";
 }
 
-function obtenerPlanCuotasCreditoTemplate({id, descripcion, icono,requisitosBasicos, documentacionLegal, tasas}){
+function obtenerPlanCuotasCreditoTemplate(creditoItem){
     return "<div style=\"width:100%;margin:20px auto;border-radius:4px;border:1px solid gray;\">" 
     + "<div style=\"margin:0px;padding:7px;background:#01A8A0;color:#fff\">"
         + "<table>"
             + "<tr>"
                 + "<td style=\"vertical-align:middle\">"
-                    + "<span onclick=\"mostrarDetallesCredito(" + id + ")\" class=\"fa fa-arrow-left fa-2x\" style=\"cursor:pointer\"></span>"
+                    + "<span onclick=\"mostrarDetallesCredito(" + creditoItem.id + ")\" class=\"fa fa-arrow-left fa-2x\" style=\"cursor:pointer\"></span>"
                 + "</td>"
                 + "<td style=\"vertical-align:middle\">"
                     + "<div class=\"logo-container-tiny\">"
-                        + "<span class=\"" + icono + " fa-2x\"></span>"
+                        + "<span class=\"" + creditoItem.icono + " fa-2x\"></span>"
                     + "</div>"
                 + "</td>"
                 + "<td style=\"vertical-align:middle;padding-left:14px;color:#fff\">"
-                    + "<h4>" + descripcion + "</h4>"
+                    + "<h4>" + creditoItem.descripcion + "</h4>"
                 + "</td>"
             + "</tr>"
         + "</table>"
     + "</div>"
     + "<div style=\"padding:14px\">"
         + "<h4 style=\"text-align:center\">PLAN DE CUOTAS</h4>"
-        + obtenerTasasSeleccionablesTemplate(tasas)
+        + obtenerTasasSeleccionablesTemplate(creditoItem.tasas)
         + "<div style=\"text-align:center\"\">"
             + "<input id=\"monto\" type=\"number\" step=\"0.01\" class=\"input-control\" placeholder=\"Monto\" autofocus/> "
             + "<select class=\"input-control\" id=\"tipo-moneda\" onchange=\"verificarTipoMoneda(this)\">"
@@ -79,19 +79,19 @@ function obtenerPlanCuotasCreditoTemplate({id, descripcion, icono,requisitosBasi
     +"</div>"
     + "<div style=\"padding:14px;text-align:center\">"
         + "<button class=\"btn btn-primary\" onclick=\"mostrarCalculoPlanCuotas()\"><span class=\"fa fa-calculator\"></span> Calcular Plan de Cuotas</button>"
-        + "<button class=\"btn btn-primary\" onclick=\"mostrarDetallesCredito(" + id + ")\"><span class=\"fa fa-arrow-left\"></span> Volver</button> "
+        + "<button class=\"btn btn-primary\" onclick=\"mostrarDetallesCredito(" + creditoItem.id + ")\"><span class=\"fa fa-arrow-left\"></span> Volver</button> "
     +"</div>"
     + "<div id=\"plan-cuotas-results\" style=\"text-align:center\"></div>"
 +"</div>";
 }
 
 
-function obtenerListadoTemplate({ titulo, listado }){
+function obtenerListadoTemplate(listadoItem){
     var html = "";
-    if(listado){
-        html += "<strong>" + titulo + "</strong>"
+    if(listadoItem.listado){
+        html += "<strong>" + listadoItem.titulo + "</strong>"
         + "<ul>";
-        listado.forEach(element => {
+        listadoItem.listado.forEach(element => {
             html += "<li>" + element + "</li><br>";
         });
         html += "</ul>"
