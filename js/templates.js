@@ -119,7 +119,7 @@ function obtenerTasasSeleccionablesTemplate(tasas){
     var html = "";
 
     if(tasas){
-        tasas.forEach(tasa => {
+        tasas.forEach(function(tasa) {
             html += "<div id=\"tasa-option-" + tasa.id + "\" class=\"tasa-option\" style=\"margin-bottom:14px;padding:7px;border:1px solid gray; border-radius:4px;cursor:pointer;text-align:center\" onclick=\"seleccionarTasa(" + tasa.id + ", " + tasa.interes + "," + tasa.plazo + ")\">"
                 +"<input id=\"tasa-radio-" + tasa.id + "\" name=\"tasa\" type=\"radio\"/> <strong>" + tasa.descripcion + ": </strong>" + redondear(tasa.interes*100) + "% a " + tasa.plazo + " años<br><br>"
             + "</div>";
