@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link type="text/css" rel="stylesheet" href="styles/fassil.css">
+    <link type="text/css" rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.css">
+</head>
+<body>
+    <div class="page-header">
+        <img src="img/logo-fassil_4.png" style="height:100%;margin:0px auto" />
+    </div>
+    <div id="page-content" class="page-content">
+    </div>
+    <script src="js/fassil.js"></script>
+    <script src="js/templates.js"></script>
+    <script>
+        window.onload = function(){
+            mostrarCreditos();
+        }
+
+        function mostrarCreditos(){
+            var pageContent = document.getElementById('page-content');
+            pageContent.innerHTML = "<div style=\"text-align:center;padding-top:56px\">"
+                + "<span class=\"fa fa-cog fa-spin fa-4x\"></span>"
+            + "</div>";
+
+            obtenerCreditos(function(creditos){
+                var html = '';
+                creditos.forEach(credito => {
+                    html += obtenerCreditoItemTemplate(credito);
+                });
+                pageContent.innerHTML = html;
+            }, function(){
+                pageContent.innerHTML = "<div style=\"text-align:center;padding-top:56px\">"
+                    + "<span class=\"fa fa-exclamation-circle fa-4x\"></span>"
+                    + "<br>Error de conexión"
+                    + "<br><button class=\"btn btn-primary\" onclick=\"window.location.reload()\">Volver a intentarlo</button>"
+                + "</div>";
+            });
+        }
+
+        function mostrarDetallesCredito(creditoId){
+            var pageContent = document.getElementById('page-content');
+            var credito = obtenerDetallesCredito(creditoId);
+            if(credito)
+                pageContent.innerHTML = obtenerDetallesCreditoTemplate(credito);
+            else{
+                pageContent.innerHTML = "<div style=\"text-align:center;padding-top:56px\">"
+                    + "<span class=\"fa fa-exclamation-circle fa-4x\"></span>"
+                    + "<br>No se encontraron los datos del crédito"
+                    + "<br><button class=\"btn btn-primary\" onclick=\"window.location.reload()\">Volver</button>"
+                + "</div>";
+            }
+        }
+
+        function mostrarPlanCuotasCredito(creditoId){
+            var pageContent = document.getElementById('page-content');
+            var credito = obtenerDetallesCredito(creditoId);
+            if(credito) {
+                pageContent.innerHTML = obtenerPlanCuotasCreditoTemplate(credito);
+                var tasaOpcion1 = document.getElementById('tasa-option-1');
+                
+                if(tasaOpcion1) {
+                    tasaOpcion1.click();
+                }
+            }
+            else{
+                pageContent.innerHTML = "<div style=\"text-align:center;padding-top:56px\">"
+                    + "<span class=\"fa fa-exclamation-circle fa-4x\"></span>"
+                    + "<br>No se encontraron los datos del crédito"
+                    + "<br><button class=\"btn btn-primary\" onclick=\"window.location.reload()\">Volver</button>"
+                + "</div>";
+            }
+        }
+
+        function mostrarCalculoPlanCuotas(){
+            var monto = document.getElementById('monto').value;
+
+            if(!monto) {
+                document.getElementById('monto-msg').innerHTML = "*Debe ingresar un monto";
+                return;
+            }
+
+            var tipoMoneda = document.getElementById('tipo-moneda').value;
+            var tasa = document.getElementsByName("tasa").value;
+
+            var pageContent = document.getElementById('plan-cuotas-results');
+            var tasaSeleccionadaString = window.localStorage.getItem('tasa_seleccionada');
+            var tasaSeleccionada = JSON.parse(tasaSeleccionadaString);
+            var planCuotas = calcularPlanCuotas({ interes: tasaSeleccionada.interes, plazo: tasaSeleccionada.plazo, monto: monto, tipoMoneda: tipoMoneda});
+            
+            if(planCuotas)
+            {
+                if(planCuotas.cuotas)
+                pageContent.innerHTML = 
+                "<div style=\"padding:7px;text-align:left\">"
+                    +"<strong>Monto: </strong>" + planCuotas.monto + " Bs."
+                    +"<br><strong>Plazo: </strong>" + planCuotas.plazoMeses + " meses"
+                    +"<br><strong>Interés mensual: </strong>" + redondear(planCuotas.interesMensual*100) + "%"
+                + "</div>"
+                + obtenerTablaPlanCuotasTemplate(planCuotas.cuotas);
+
+            }
+            else{
+                pageContent.innerHTML = "<div style=\"text-align:center;padding-top:56px\">"
+                    + "<span class=\"fa fa-exclamation-circle fa-4x\"></span>"
+                    + "<br>Error al calcular el plan de cuotas"
+                    + "<br><button class=\"btn btn-primary\" onclick=\"mostrarCalculoPlanCuotas()\">Volver</button>"
+                + "</div>";
+            }
+        }
+    </script>
+</body>

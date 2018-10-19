@@ -1,0 +1,80 @@
+[{
+    "id":1,
+    "descripcion": "Crédito de Vivienda",
+    "icono":"fa fa-home",
+    "requisitosBasicos":[
+        "Copia simple del documento de identidad del solicitante y cónyuge vigentes",
+        "Aviso de cobranza de servicio público de agua o luz",
+        "Copia simple de respaldo patrimonial",
+        "Extracto de préstamos en otras instituciones"
+    ],
+    "documentacionLegal":[
+        "Copia simple y legilble del documento de identidad vigente de los propietarios y cónyuges cuando corresponda",
+        "Original o copia legalizada del Título de Propiedad inscrito en el registro de Derechos Reales",
+        "Original del Certificado de Tradición Específica emitido por Derechos Reales o Títulos de Propiedad de los anteriores propietarios (originales o fotocopias legalizadas), que acrediten la tradición del inmueble por 10 años",
+        "Original del Certificado Alodial o Folio Real, emitido por Derechos Reales, con antigüedad no mayor a 30 días calendario, o en su defecto Alodial o Folio Real antiguo con Formulario de Información Rápida actualizado",
+        "Original o copia legalizada de los comprobantes de pago de impuestos anuales, de las últimas cinco gestiones o certificado de pago de impuestos",
+        "Original del Certificado Catastral otorgado por la municipalidad respectiva, acreditando la inscripción del inmueble a nombre del actual propietario o documento equivalente según jurisdicción",
+        "Original del plano de ubicación en hoja de papel bond debidamente aprobado y visado por la municipalidad correspondiente"
+    ],
+    "tasas": [{
+        "id":1,
+        "descripcion":"Tasa",
+        "interes":0.10,
+        "plazo": 5
+    },{
+        "id":2,
+        "descripcion":"Tasa de crédito de vivienda social",
+        "interes": 0.055,
+        "plazo": 5
+    }]
+},{
+    "id":2,
+    "descripcion": "Crédito de Vehículo",
+    "icono":"fa fa-car",
+    "requisitosBasicos":[
+        "Copia simple del documento de identidad del solicitante y cónyuge vigentes",
+        "Aviso de cobranza de servicio público de agua o luz",
+        "Copia simple de respaldo patrimonial",
+        "Extracto de préstamos en otras instituciones",
+        "Proforma de la casa comercial",
+        "En caso de vehículos usados, avalúo realizado por perito autorizado"
+    ],
+    "documentacionLegal":[
+        "Copia simple y legilble del documento de identidad vigente de los propietarios y cónyuges cuando corresponda",
+        "Original o copia legalizada del Título de Propiedad",
+        "Original del Certificado de Registro de Propiedad (CRPVA)",
+        "Original o copia legalizada de la Resolución de Inscripción de Vehículo emitida por Tránsito",
+        "Original o copia legalizada de la Póliza de Importación",
+        "Original del Certificado Alodial, emitido por Tránsito, con antigüedad no mayor a 30 días calendario",
+        "Impuestos anuales: De tratarse de Municipios que posean sistema RUAT computarizado, el formulario impreso obtenido de la página de internet del RUAT, que acredite el pago de impuestos, debidamente firmado por el funcionario que imprimió el documento. Debe consignar deuda 0"
+    ],
+    "tasas": [{
+        "id":1,
+        "descripcion":"Tasa para vehículo nuevo",
+        "interes":0.20,
+        "plazo": 5
+    },{
+        "id":2,
+        "descripcion":"Tasa para vehículo usado",
+        "interes":0.22,
+        "plazo": 3
+    }]
+},{
+    "id":3,
+    "descripcion": "Crédito de Consumo",
+    "icono":"fa fa-dollar",
+    "requisitosBasicos":[
+        "Copia simple del documento de identidad del solicitante y cónyuge vigentes",
+        "Aviso de cobranza de servicio público de agua o luz",
+        "Copia simple de respaldo patrimonial",
+        "Extracto de préstamos en otras instituciones"
+    ],
+    "documentacionLegal": null,
+    "tasas": [{
+        "id":1,
+        "descripcion":"Tasa",
+        "interes": 0.21,
+        "plazo": 4
+    }]
+}]

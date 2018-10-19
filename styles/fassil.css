@@ -1,0 +1,133 @@
+body, html
+{
+    font-family: sans-serif;
+    background: #F2F2F2;
+    color:#333;
+    margin:0px;
+}
+
+.page-header
+{
+    height: 96px;
+    background:#022A5B;
+    position: fixed;
+    width:100%;
+    top:0px;
+    left:0px;
+    text-align: center;
+}
+.page-content
+{
+    margin-top: 97px;
+    color:#4D4D4D;
+}
+
+.page-content strong
+{
+    color:#022A5B;
+}
+
+.item-container
+{
+    border-radius:4px;
+    padding:14px;
+}
+
+.logo-container
+{
+    border-radius: 100%;
+    width: 98px;
+    height: 80px;
+    text-align: center;
+    background: #022A5B;
+    color: white;
+    padding-top: 16px;
+    cursor: pointer;
+}
+
+.logo-container-tiny {
+    border-radius: 100%;
+    width: 55px;
+    height: 46px;
+    text-align: center;
+    background: #022A5B;
+    color: white;
+    padding-top: 10px;
+}
+
+.btn {
+    display: block;
+    width:93%;
+    padding: 9px 12px 9px;
+    border: 1px solid transparent;
+    line-height: 18px;
+    font-size: 14px;
+    text-align: center;
+    outline: none;
+    cursor: pointer;
+    white-space: normal;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    transition: all 0.2s ease-in-out;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.btn-primary
+{    
+    margin-right: 10px;
+    background-color: #002056;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 1px solid #001842;
+    margin-left: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background: #002056;
+    border: 1px solid #001842;
+    color: #fff !important;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.1);
+    font-size: 16px;
+    line-height: 20px;
+    padding: 12px 17px 12px !important;
+}
+
+.tasa-option.selected
+{
+    background:#01A8A0;
+    color:white;
+}
+
+.tasa-option.selected strong
+{
+    color:white;
+}
+
+.input-control
+{
+    border: 1px solid gray;
+    border-radius: 4px;
+    padding: 7px 3px;
+    font-size: 18px;
+}
+
+.my-table
+{
+    border-collapse: collapse;
+    margin:0px auto;
+    font-size: 9px;
+}
+.my-table th, .my-table td
+{
+    border:1px solid gray;
+    padding:4px;
+}
+

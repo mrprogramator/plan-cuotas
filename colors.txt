@@ -1,0 +1,5 @@
+blue -> #022A5B
+letters -> #99A6B7
+green water -> #01A8A0
+gray -> #858d91
+white -> #fff
