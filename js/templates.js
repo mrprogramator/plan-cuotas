@@ -91,7 +91,7 @@ function obtenerListadoTemplate(listadoItem){
     if(listadoItem.listado){
         html += "<strong>" + listadoItem.titulo + "</strong>"
         + "<ul>";
-        listadoItem.listado.forEach(element => {
+        listadoItem.listado.forEach(function(element) {
             html += "<li>" + element + "</li><br>";
         });
         html += "</ul>"
