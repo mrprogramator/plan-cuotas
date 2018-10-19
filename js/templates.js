@@ -106,7 +106,7 @@ function obtenerTasasTemplate(tasas){
 
     if(tasas){
         html += "<div style=\"padding-left:7px\">";
-        tasas.forEach(tasa => {
+        tasas.forEach(function(tasa) {
             html += "<strong>" + tasa.descripcion + ": </strong>" + redondear(tasa.interes*100) + "% a " + tasa.plazo + " años<br><br>"; 
         })
         html += "</div>";
