@@ -37,15 +37,15 @@ function obtenerDetallesCredito(creditoId){
     return creditos.filter(function(cred){ return cred.id === creditoId })[0];
 }
 
-function calcularPlanCuotas({interes, plazo, monto, tipoMoneda}){
-    monto = parseFloat(monto);
+function calcularPlanCuotas(planCuotas){
+    planCuotas.monto = parseFloat(planCuotas.monto);
 
-    if(tipoMoneda == 2){
-        monto *= 6.96;
+    if(planCuotas.tipoMoneda == 2){
+        planCuotas.monto *= 6.96;
     }
 
-    var plazoMeses = plazo*12;
-    var saldoActual = monto;
+    var plazoMeses = planCuotas.plazo*12;
+    var saldoActual = planCuotas.monto;
     var cuotas = [];
     cuotas.push({
         id:0,
@@ -55,8 +55,8 @@ function calcularPlanCuotas({interes, plazo, monto, tipoMoneda}){
         saldo: saldoActual
     });
 
-    var capitalMes = monto/plazoMeses;
-    var interesMensual = interes/12;
+    var capitalMes = planCuotas.monto/plazoMeses;
+    var interesMensual = planCuotas.interes/12;
 
     var totalCapital = 0;
     var totalIntereses = 0;
