@@ -141,7 +141,7 @@ function seleccionarTasa(tasaId, interes, plazo){
     document.getElementById('tasa-option-' + tasaId).setAttribute('class', 'tasa-option selected');
     document.getElementById('tasa-radio-' + tasaId).click();
     var tasaSeleccionada = {tasaId: tasaId, interes: interes, plazo:plazo};
-    string dataSerialized = JSON.stringify(tasaSeleccionada);
+    var dataSerialized = JSON.stringify(tasaSeleccionada);
     localStorage.setItem('tasa_seleccionada', dataSerialized);
     document.getElementById('plan-cuotas-results').innerHTML = '';
 }
